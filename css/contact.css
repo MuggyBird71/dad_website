@@ -1,0 +1,181 @@
+input:not([type=submit]), textarea {
+    font-family: var(--font);
+    font-size: 15px;
+    padding: 12px 15px 11px 15px;
+    outline: none;
+    color: var(--main-color);
+    border: 2px solid var(--dark-bg);
+    background-color: var(--dark-bg);
+    cursor: pointer;
+    position: relative;
+    width: 100%;
+    cursor: initial;
+    border-radius: 5px;
+    resize: none;
+}
+    textarea {
+        height: 200px;
+    }
+    input::placeholder, textarea::placeholder {
+        color: rgba(0,0,0,0.51);
+        font-style: italic;
+        font-weight: normal;
+    }
+        input:focus::placeholder,
+        input:active::placeholder {
+            color: transparent;
+        }
+    input.error, textarea.error {
+        border-color: var(--red-color);
+    }
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+    input[type=number] {
+      -moz-appearance: textfield;
+    }
+    input[type=submit] {
+        font-family: var(--font);
+        background: var(--main-color);
+        border-radius: 5px;
+        width: 100%;
+        height: 42px;
+        color: white;
+        text-transform: uppercase;
+        font-size: 15px;
+        font-weight: bold;
+        margin-top: 55px;
+        cursor: pointer;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        opacity: 1;
+    }
+.contact .content {
+    grid-template-columns: 1fr 1fr;
+}
+.contact h2 {
+    grid-column: 1/3;
+    text-align: center;
+}
+.contact-form {
+    display: grid;
+}
+.contact-form .code {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    column-gap: 25px;
+}
+.contact-form p {
+    grid-column: 1/3;
+    width: 100%;
+    padding-left: 0 !important;
+    margin: 15px 0 5px 0;
+    font-weight: bold;
+}
+.contact a {
+    color: white;
+    text-decoration: none;
+    background: var(--grey-color);
+    border-radius: 5px;
+    padding: 5px 75px;
+    font-size: 13px;
+}
+.contact iframe {
+    height: 485px;
+    box-shadow: var(--shadow);
+}
+
+@media only screen and (max-width: 800px) {
+    .contact p {
+        font-size: 13px;
+    }
+    .contact .content {
+        grid-template-columns: 1fr;
+    }
+    .contact h2 {
+        grid-column: 1;
+    }
+    .contact .panel-contact {
+        grid-row: 2;
+    }
+    .contact iframe {
+        height: 275px;
+    }
+}
+
+/* alert */
+.alert {
+    position: fixed;
+    top: 65px;
+    left: 50%;
+    transform: translate(-50%);
+    width: calc(100vw - 50px);
+    max-width: 346px;
+    background: var(--main-color);
+    border-radius: 58px;
+    color: white;
+    font-size: 12px;
+    display: none;
+    z-index: 999;
+  }
+    .alert .ok,
+    .alert .fail {
+        height: 52px;
+        display: grid;
+        grid-template-columns: 47px auto 77px;
+        align-items: center;
+        justify-items: center;
+        line-height: 54px;
+    }
+        .alert .fail .icon {
+            width: 23px;
+            height: 23px;
+            background: var(--red-color);
+            border-radius: 100%;
+            margin-top: -2.5px;
+        }
+        .alert .ok .icon {
+            width: 23px;
+            height: 23px;
+            background: #2cd952;
+            border-radius: 100%;
+            margin-top: -2.5px;
+        }
+            .alert .icon span {
+                position: absolute;
+                width: 13px;
+                height: 2px;
+                background: var(--main-color);
+                border-radius: 2px;
+                transform: rotate(-45deg) translate(-2.5px, 12.5px);
+            }
+            .alert .fail .icon span:first-child {
+                transform: rotate(-45deg) translate(-4px, 11px);
+            }
+            .alert .fail .icon span:last-child {
+                transform: rotate(45deg) translate(11px, 4px);
+            }
+            .alert .ok .icon span:last-child {
+                width: 7px;
+                transform: rotate(45deg) translate(12px, 6px);
+            }
+        .alert .close {
+            width: 17px;
+            height: 17px;
+            margin: 11px 0 0 15px;
+            cursor: pointer;
+        }
+            .alert .close span {
+                position: absolute;
+                width: 21px;
+                height: 2px;
+                background: white;
+                border-radius: 2px;
+                transform: rotate(45deg);
+            }
+            .alert .close span:last-child {
+                transform: rotate(-45deg);
+            }

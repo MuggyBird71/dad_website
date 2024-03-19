@@ -1,0 +1,314 @@
+.hero {
+    width: 100%;
+    background-image: url(../images/background.jpg);
+    background-position: top center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: calc(100% - 100px);
+}
+    .hero::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 25vh;
+        background: linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%);
+    }
+    .hero .intro {
+        position: absolute;
+        left: 0;
+        bottom: 45px;
+        width: 100%;
+        height: 300px;
+        color: white;
+        text-align: left;
+    }
+        .hero .intro::before {
+            content: "";
+            position: absolute;
+            top: -15px;
+            width: 67%;
+            height: 100%;
+            background: rgba(56, 159, 209, .55);
+        }
+        .hero .intro h1 {
+            font-size: 31px;
+            line-height: 39px;
+            font-weight: normal;
+            margin: 23px 0;
+        }
+        .hero .intro h2 {
+            max-width: 65%;
+            font-weight: normal;
+            font-size: 23px;
+            line-height: 31px;
+        }
+        .hero .intro a {
+            color: white;
+            font-weight: bold;
+        }
+.areas {
+    margin-top: -55px;
+}
+    .areas .tabs {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        column-gap: 5px;
+        margin-bottom: 5px;
+    }
+        .areas::before, .areas::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            width: calc(((100% - var(--app-max-width)) /2) - 5px);
+            min-width: 15px;
+            height: 50px;
+            background: var(--blue-color);
+            opacity: .55;
+        }
+        .areas::after {
+            right: 0;
+        }
+    .areas .tabs .tab {
+        font-size: 15px;
+        line-height: 50px;
+        background: var(--blue-color);
+        text-align: center;
+        color: white;
+        cursor: pointer;
+    }
+        .areas .tabs .tab.active {
+            color: var(--blue-color);
+            font-weight: bold;
+            background: white;
+        }
+        .areas .tabs .tab.active::before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 5px;
+            background: white;
+            left: 0;
+            bottom: -5px;
+        }
+    .areas .tabs-mask {
+        overflow-x: hidden;
+    }
+    .areas .tabs-picture {
+        position: absolute;
+        top: 0;
+        right: calc((100% / 5) * 3);
+        background: url(../images/phillips-1.jpg) no-repeat center;
+        background-size: cover;
+        width: calc((100% / 5) * 2);
+        height: 100%;
+        transition: 300ms;
+        box-shadow: var(--shadow);
+    }
+    .areas .tabs-content {
+        width: 500%;
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        align-items: center;
+        transition: 350ms;
+    }
+        .areas .tabs-content div {
+            min-height: 450px;
+            padding-top: 100px;
+        }
+        .areas .tabs-content p {
+            font-size: 27px;
+            line-height: 35px;
+        }
+        .areas .tabs-content div:nth-of-type(1),
+        .areas .tabs-content div:nth-of-type(2) {
+            padding-right: calc(((100% / 5) * 2) + 35px);
+            padding-left: 35px;
+        }
+        .areas .tabs-content div:nth-of-type(3),
+        .areas .tabs-content div:nth-of-type(4),
+        .areas .tabs-content div:nth-of-type(5) {
+            padding-left: calc(((100% / 5) * 2) + 35px);
+        }
+    .tabs-content a {
+        position: absolute;
+        right: 0;
+        bottom: 25px;
+        color: white;
+        text-decoration: none;
+        background: var(--grey-color);
+        border-radius: 5px;
+        padding: 5px 75px;
+        font-size: 13px;
+    }
+    .tabs-content div:nth-of-type(1) a,
+    .tabs-content div:nth-of-type(2) a {
+        right: unset;
+        left: 35px;
+    }
+    .tabs.go-one ~ .tabs-mask .tabs-content {
+        transform: none;
+    }
+    .tabs.go-two ~ .tabs-mask .tabs-content {
+        transform: translate(-20%);
+    }
+    .tabs.go-three ~ .tabs-mask .tabs-content {
+        transform: translate(-40%);
+    }
+    .tabs.go-four ~ .tabs-mask .tabs-content {
+        transform: translate(-60%);
+    }
+    .tabs.go-five ~ .tabs-mask .tabs-content {
+        transform: translate(-80%);
+    }
+    .tabs.go-one ~ .tabs-mask .tabs-picture,
+    .tabs.go-two ~ .tabs-mask .tabs-picture {
+        right: 0;
+    }
+.jm {
+    background: var(--dark-bg);
+}
+    .jm .content {
+        padding-bottom: 95px;
+    }
+    .jm img {
+        box-shadow: var(--shadow);
+        width: 70%;
+        justify-self: end;
+    }
+    .jm a {
+        color: white;
+        text-decoration: none;
+        background: var(--blue-color);
+        border-radius: 5px;
+        padding: 5px 75px;
+        font-size: 13px;
+    }
+    .jm .quote {
+        position: absolute;
+        bottom: 0;
+        left: 35%;
+        padding: 29px 39px;
+        background: white;
+        max-width: 595px;
+    }
+        .jm .quote p {
+            margin-top: 0;
+            font-size: 19px;
+        }
+@media only screen and (max-width: 1024px) {
+    .hero .intro h2 {
+        font-size: 21px;
+        line-height: 25px;
+    }
+}
+@media only screen and (max-width: 800px) {
+    .hero .intro {
+        height: 250px;
+        bottom: 0;
+    }
+        .hero .intro::before {
+            width: 100%;
+            top: 0;
+        }
+        .hero .intro h2 {
+            font-size: 19px;
+            line-height: 25px;
+            max-width: 98%;
+        }
+    .content {
+        padding: 55px 0;
+    }
+    .jm img {
+        justify-self: center;
+        grid-row: 2;
+        width: 50%;
+    }
+    .jm .quote {
+        left: 0;
+        max-width: 100%;
+        box-shadow: var(--shadow);
+        z-index: 2;
+    }
+    .jm .quote p {
+        font-size: 15px;
+    }
+}
+@media only screen and (max-width: 900px) {
+    .hero .intro {
+        bottom: -15px;
+    }
+    .areas {
+        margin-top: 0;
+    }
+    .areas .tabs, .areas::before, .areas::after {
+        display: none;
+    }
+    .areas .tabs-mask {
+        overflow-x: visible;
+        display: grid;
+    }
+    .areas .tabs-content {
+        width: 100%;
+        grid-template-columns: 1fr;
+        row-gap: 25px;
+    }
+    .tabs.go-two ~ .tabs-mask .tabs-content,
+    .tabs.go-three ~ .tabs-mask .tabs-content,
+    .tabs.go-four ~ .tabs-mask .tabs-content,
+    .tabs.go-five ~ .tabs-mask .tabs-content {
+        transform: none;
+    }
+    .areas .tabs-picture {
+        position: relative;
+        width: 100%;
+        height: 300px;
+        right: unset;
+        grid-row: 1;
+        margin-top: 55px;
+    }
+    .areas .tabs-content div {
+        padding: 25px 0;
+        min-height: unset;
+        border-bottom: 3px solid var(--grey-color);
+    }
+    .areas .tabs-content div:nth-of-type(1),
+    .areas .tabs-content div:nth-of-type(2) {
+        padding-right: 0;
+        padding-left: 0;
+    }
+    .areas .tabs-content div:nth-of-type(3),
+    .areas .tabs-content div:nth-of-type(4),
+    .areas .tabs-content div:nth-of-type(5) {
+        padding-left: 0;
+    }
+    .areas .tabs-content p {
+        font-size: 19px;
+        line-height: 25px;
+    }
+    .tabs-content div:nth-of-type(1) a,
+    .tabs-content div:nth-of-type(2) a {
+        right: 0;
+        left: unset;
+    }
+    .areas h3 {
+        font-weight: bold;
+        font-size: 25px;
+    }
+}
+@media only screen and (max-width: 550px) {
+    .jm img {
+        width: 100%;
+    }
+    .hero .intro h2,
+    .areas .tabs-content p {
+        font-size: 15px;
+        line-height: 21px;
+        padding-bottom: 15px;
+    }
+    .hero .intro h1 {
+        font-size: 25px;
+        margin: 9px 0;
+    }
+}
