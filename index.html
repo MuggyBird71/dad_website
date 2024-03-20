@@ -150,11 +150,12 @@
                             <p>Message:</p>
                             <textarea id="message" name="message" maxlength="1000" placeholder="Your Message..."  /></textarea>
                         </div>
-                        <div class="form-container">
-                            <!-- Your existing form fields -->
-                            <div class="g-recaptcha" data-sitekey="6LeNrp4pAAAAABIN4Up29uR6BW19uOGWctPodCUf"></div>
-                            <input type="submit" id="submit" name="submit" value="Send Message" />
-                        </div>                        
+                        <form method="post" action="verify-captcha.php">
+                            <p>Please enter the code from the image:</p>
+                            <img src="captcha-image.php" alt="CAPTCHA Image">
+                            <input type="text" name="captchaInput" required>
+                            <input type="submit" value="Submit">
+                        </form>                   
                     </div>
                     </form>
                 </div>
