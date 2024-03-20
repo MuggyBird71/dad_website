@@ -1,0 +1,43 @@
+.hero {
+    min-height: 50vh;
+    background-position: center;
+}
+.hero h1 {
+    color: white;
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 7vw;
+    text-shadow: var(--shadow);
+    width: 100%;
+    text-align: center;
+}
+.contact h2 {
+    display: none;
+}
+.shadow {
+    box-shadow: var(--shadow);
+}
+.blue {
+    background-color: var(--dark-bg);
+    padding: 35px 0;
+}
+.founder img {
+    grid-column: 2;
+    grid-row: 1;
+}
+
+@media only screen and (max-width: 800px) {
+    .hide-mobile {
+        display: none;
+    }
+    .founder img {
+        grid-column: 1;
+    }
+}
+@media only screen and (max-width: 500px) {
+    .hero h1 {
+        font-size: 35px;
+    }
+}
