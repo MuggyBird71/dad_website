@@ -17,7 +17,7 @@ $textColor = imagecolorallocate($image, 0, 0, 0); // Black text
 imagefilledrectangle($image, 0, 0, 120, 30, $bgColor);
 
 // Add the text
-imagettftext($image, 20, 0, 10, 25, $textColor, '/index.html/NotoSerif-Regular.ttf', $captchaText);
+imagettftext($image, 20, 0, 10, 25, $textColor, '/path/dad_website/fonts_/NotoSerif.ttf', $captchaText);
 
 // Tell the browser that this is an image
 header('Content-Type: image/jpeg');
