@@ -254,8 +254,9 @@
 
         // Send the form data to the Google Form's POST endpoint
         if(!name || !email || !subject ||!message){
-        alert("fill all columns");
-        return false;}
+            alert("Fill all columns.");
+            return false;}
+        // Fetch request     
         fetch('https://docs.google.com/forms/d/e/1FAIpQLSciLy9HyNOcPBdy_se6owjAQCFV4MoIGw1hRbomsLXvj2RQOA/formResponse', {
             method: 'POST',
             body: formData,
