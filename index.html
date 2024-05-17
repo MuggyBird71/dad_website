@@ -253,6 +253,9 @@
         formData.append('entry.2013618763', message);
 
         // Send the form data to the Google Form's POST endpoint
+        if(!name || !email || !subject ||!message){
+        alert("fill all columns");
+        return false;}
         fetch('https://docs.google.com/forms/d/e/1FAIpQLSciLy9HyNOcPBdy_se6owjAQCFV4MoIGw1hRbomsLXvj2RQOA/formResponse', {
             method: 'POST',
             body: formData,
