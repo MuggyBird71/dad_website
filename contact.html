@@ -66,24 +66,30 @@
             <div class="panel panel-contact">
                 <div class="panel-inner">
                     <form method="post">
-                    <div class="contact-form">
-                        <div>
-                            <p>Your name:</p>
-                            <input type="text" id="name" name="name" placeholder="Your Name..." value="" />
+                        <div class="panel-inner">
+                            <form id="demo-form" method="post" onsubmit="handleFormSubmit(event)">
+                                <div class="contact-form">
+                                    <div>
+                                        <p>Your name:</p>
+                                        <input type="text" id="name" name="name" placeholder="Your Name..." value="" />
+                                    </div>
+                                    <div>
+                                        <p>E-mail:</p>
+                                        <input type="text" id="email" name="email" placeholder="Your E-mail Address..." value="" />
+                                    </div>
+                                    <div>
+                                        <p>Subject: <em>(Optional)</em></p>
+                                        <input type="text" id="subject" name="subject" placeholder="Message Subject..." value="" />
+                                    </div>
+                                    <div>
+                                        <p>Message:</p>
+                                        <textarea id="message" name="message" maxlength="1000" placeholder="Your Message..."></textarea>
+                                    </div>
+                                    <!-- reCAPTCHA button -->
+                                    <button type="submit">Submit</button>
+                                </div>
+                            </form>
                         </div>
-                        <div>
-                            <p>E-mail:</p>
-                            <input type="text" id="email" name="email" placeholder="Your E-mail Address..." value="" />
-                        </div>
-                        <div>
-                            <p>Subject: <em>(Optional)</em></p>
-                            <input type="text" id="subject" name="subject" placeholder="Message Subject..." value="" />
-                        </div>
-                        <div>
-                            <p>Message:</p>
-                            <textarea id="message" name="message" maxlength="1000" placeholder="Your Message..."  /></textarea>
-                        </div>
-                    </div>
                     </form>
                 </div>
             </div>
@@ -118,6 +124,39 @@
 </div>
 <script src="js/custom.js"></script><script>
     $('.l5').addClass('active');
+    
+    function handleFormSubmit(event) {
+        event.preventDefault(); // Prevent the form from submitting normally
+
+        // Extract data from the form inputs
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const subject = document.getElementById('subject').value;
+        const message = document.getElementById('message').value;
+
+        // Construct the form data object
+        const formData = new FormData();
+        formData.append('entry.1121215277', name);
+        formData.append('entry.1953839127', email);
+        formData.append('entry.670186898', subject);
+        formData.append('entry.2013618763', message);
+
+        // Send the form data to the Google Form's POST endpoint
+        if(!name || !email || !subject ||!message){
+            alert("Fill all columns.");
+            return false;}
+        // Fetch request     
+        fetch('https://docs.google.com/forms/d/e/1FAIpQLSciLy9HyNOcPBdy_se6owjAQCFV4MoIGw1hRbomsLXvj2RQOA/formResponse', {
+            method: 'POST',
+            body: formData,
+            mode: 'no-cors'
+        }).then(response => {
+            alert('Thank you! Your submission has been received.');
+            document.getElementById('demo-form').reset(); // Reset the form
+        }).catch(error => {
+            alert('There was an issue with your submission. Please try again.');
+        });
+    }
 </script>
 </body>
 </html>
