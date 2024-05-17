@@ -66,24 +66,24 @@
     <div class="panel-inner">
             <form id="demo-form" method="post" target="hidden_iframe" onsubmit="handleFormSubmit(event)">
                 <div class="contact-form">
-                        <div>
-                             <p>Your name:</p>
-                            <input type="text" id="name" name="entry.1121215277" placeholder="Your Name..." value="" />
-                        </div>
-                        <div>
-                            <p>E-mail:</p>
-                            <input type="email" id="email" name="entry.1953839127" placeholder="Your E-mail Address..." value="" />
-                        </div>
-                        <div>
-                            <p>Subject: <em>(Optional)</em></p>
-                            <input type="text" id="subject" name="entry.670186898" placeholder="Message Subject..." value="" />
-                        </div>
-                        <div>
-                            <p>Message:</p>
-                            <textarea id="message" name="entry.2013618763" maxlength="1000" placeholder="Your Message..."></textarea>
-                        </div>
-                            <button type="submit">Submit</button>
-                        </div>
+                    <div>
+                        <p>Your name:</p>
+                        <input type="text" id="name" name="entry.1121215277" placeholder="Your Name..." value="" />
+                    </div>
+                    <div>
+                        <p>E-mail:</p>
+                        <input type="email" id="email" name="entry.1953839127" placeholder="Your E-mail Address..." value="" />
+                    </div>
+                    <div>
+                        <p>Subject: <em>(Optional)</em></p>
+                        <input type="text" id="subject" name="entry.670186898" placeholder="Message Subject..." value="" />
+                    </div>
+                    <div>
+                        <p>Message:</p>
+                        <textarea id="message" name="entry.2013618763" maxlength="1000" placeholder="Your Message..."></textarea>
+                    </div>
+                        <button type="submit">Submit</button>
+                    </div>
                     </form>
                     <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
                 </div>
@@ -130,18 +130,28 @@
         const subject = document.getElementById('subject').value;
         const message = document.getElementById('message').value;
 
-        // Validate form inputs
-        if (!name || !email || !subject || !message) {
-            alert("Please fill out all fields.");
-            return;
-        }
+        // Construct the form data object
+        const formData = new FormData();
+        formData.append('entry.1121215277', name);
+        formData.append('entry.1953839127', email);
+        formData.append('entry.670186898', subject);
+        formData.append('entry.2013618763', message);
 
-        // Submit the form via the hidden iframe
-        document.getElementById('demo-form').submit();
-
-        // Show success message
-        alert('Thank you! Your submission has been received.');
-        document.getElementById('demo-form').reset(); // Reset the form
+        // Send the form data to the Google Form's POST endpoint
+        if(!name || !email || !subject ||!message){
+            alert("Fill all columns.");
+            return false;}
+        // Fetch request     
+        fetch('https://docs.google.com/forms/d/e/1FAIpQLSciLy9HyNOcPBdy_se6owjAQCFV4MoIGw1hRbomsLXvj2RQOA/formResponse', {
+            method: 'POST',
+            body: formData,
+            mode: 'no-cors'
+        }).then(response => {
+            alert('Thank you! Your submission has been received.');
+            document.getElementById('demo-form').reset(); // Reset the form
+        }).catch(error => {
+            alert('There was an issue with your submission. Please try again.');
+        });
     }
 </script>
 </body>
