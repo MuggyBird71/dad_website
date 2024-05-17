@@ -236,7 +236,7 @@
         $(this).addClass('active');
     });
 
-    function handleFormSubmit(event) {
+    async function handleFormSubmit(event) {
         event.preventDefault(); // Prevent the form from submitting normally
 
         // Extract data from the form inputs
@@ -245,11 +245,27 @@
         const subject = document.getElementById('subject').value;
         const message = document.getElementById('message').value;
 
-        // Construct the pre-filled Google Form URL
-        const formUrl = `https://docs.google.com/forms/d/e/1FAIpQLSciLy9HyNOcPBdy_se6owjAQCFV4MoIGw1hRbomsLXvj2RQOA/viewform?usp=pp_url&entry.1121215277=${encodeURIComponent(name)}&entry.1953839127=${encodeURIComponent(email)}&entry.670186898=${encodeURIComponent(subject)}&entry.2013618763=${encodeURIComponent(message)}`;
+        // Construct the form data object
+        const formData = new FormData();
+        formData.append('entry.1121215277', name);
+        formData.append('entry.1953839127', email);
+        formData.append('entry.670186898', subject);
+        formData.append('entry.2013618763', message);
 
-        // Redirect to the pre-filled Google Form URL
-        window.location.href = formUrl;
+        // Send the form data to the Google Form's POST endpoint
+        const response = await fetch('https://docs.google.com/forms/d/e/1FAIpQLSciLy9HyNOcPBdy_se6owjAQCFV4MoIGw1hRbomsLXvj2RQOA/formResponse', {
+            method: 'POST',
+            body: formData,
+            mode: 'no-cors'
+        });
+
+        // Handle the response
+        if (response.ok) {
+            alert('Thank you! Your submission has been received.');
+            document.getElementById('demo-form').reset(); // Reset the form
+        } else {
+            alert('There was an issue with your submission. Please try again.');
+        }
     }
 </script>
 </body>
