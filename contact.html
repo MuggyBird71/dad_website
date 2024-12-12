@@ -130,14 +130,14 @@
         
         function handleFormSubmit(event) {
             event.preventDefault(); // Prevent the form from submitting normally
-
+    
             // Extract data from the form inputs
             const name = document.getElementById('name').value;
             const email = document.getElementById('email').value;
             const subject = document.getElementById('subject').value;
             const number = document.getElementById("number").value;
             const message = document.getElementById('message').value;
-
+    
             // Construct the form data object
             const formData = new FormData();
             formData.append('entry.1121215277', name);
@@ -145,24 +145,21 @@
             formData.append('entry.1120585258', number);
             formData.append('entry.670186898', subject);
             formData.append('entry.2013618763', message);
-
+    
             // Send the form data to the Google Form's POST endpoint
             if (!name || !email || !subject || !number || !message) {
                 alert("Fill all columns.");
                 return false;
             }
-
-            // Send the form data to the Google Form's POST endpoint
+            // Fetch request     
             fetch('https://docs.google.com/forms/d/e/1FAIpQLSciLy9HyNOcPBdy_se6owjAQCFV4MoIGw1hRbomsLXvj2RQOA/formResponse', {
                 method: 'POST',
                 body: formData,
                 mode: 'no-cors'
             }).then(response => {
-                console.log('Form submission successful:', response);
                 alert('Thank you! Your submission has been received.');
                 document.getElementById('demo-form').reset(); // Reset the form
             }).catch(error => {
-                console.error('Error submitting form:', error);
                 alert('There was an issue with your submission. Please try again.');
             });
         }
