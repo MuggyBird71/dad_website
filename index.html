@@ -155,6 +155,10 @@
                                 <input type="text" id="email" name="email" placeholder="Your E-mail Address..." value="" />
                             </div>
                             <div>
+                                <p>Number:</p>
+                                <input type="number" id="number" name="number" placeholder="Your Phone Number..." value="" />
+                            </div>                            
+                            <div>
                                 <p>Subject: <em>(Optional)</em></p>
                                 <input type="text" id="subject" name="subject" placeholder="Message Subject..." value="" />
                             </div>
@@ -247,19 +251,22 @@
         const name = document.getElementById('name').value;
         const email = document.getElementById('email').value;
         const subject = document.getElementById('subject').value;
+        const number = document.getElementById("number").value;
         const message = document.getElementById('message').value;
 
         // Construct the form data object
         const formData = new FormData();
         formData.append('entry.1121215277', name);
         formData.append('entry.1953839127', email);
+        fromData.append('entry.1120585258', number);
         formData.append('entry.670186898', subject);
         formData.append('entry.2013618763', message);
 
         // Send the form data to the Google Form's POST endpoint
-        if(!name || !email || !subject ||!message){
+        if (!name || !email || !subject || !number || !message) {
             alert("Fill all columns.");
-            return false;}
+            return false;
+        }
         // Fetch request     
         fetch('https://docs.google.com/forms/d/e/1FAIpQLSciLy9HyNOcPBdy_se6owjAQCFV4MoIGw1hRbomsLXvj2RQOA/formResponse', {
             method: 'POST',
